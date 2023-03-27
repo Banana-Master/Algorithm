@@ -9,7 +9,7 @@ function solution(letter) {
     let result = ''
     let answer = letter.split(' ');
     for(let i = 0; i < answer.length; i++) {
-        result += answer[i].replace(answer[i],morse[answer[i]])
+        result += morse[answer[i]]
     }
     return result;
 }
