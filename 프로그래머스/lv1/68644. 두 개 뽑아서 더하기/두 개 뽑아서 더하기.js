@@ -7,7 +7,6 @@ function solution(numbers) {
             } 
         }
     }
-    let set = new Set(answer);
-    let uniqueArr = [...set];
-    return uniqueArr.sort((x,y)=>x-y);
+    let result = [...new Set(answer)];
+    return result.sort((x,y)=>x-y);
 }
