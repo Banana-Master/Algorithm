@@ -1,15 +1,4 @@
 function solution(s) {
-//     let arr = [...s];
-//     for(let i = 0, j = 1; i < arr.length; i+=2, j+=2) {
-//         if(arr[i] >= 'a' && arr[i] <= 'z' && arr[i] !== ' ') {
-//             arr[i] = arr[i].toUpperCase();
-//         }
-
-//         if(arr[j] >= 'A' && arr[j] <= 'Z' && arr[j] !== ' ') {
-//             arr[j] = arr[j].toLowerCase();
-//         }
-//     }
-//     return arr.join('');
     let arr = s.split(' ');
     let result = [];
     arr.forEach((x) => {
