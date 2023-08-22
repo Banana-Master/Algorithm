@@ -15,26 +15,23 @@ const solution = (input) => {
         english_number.set(i, arr)
     }
     let sort = [...english_number.values()].sort((x, y) => x > y ? 1 : -1);
-    let result = [];
+    let result = '';
+    let count = 0;
     for (let i = 0; i < sort.length; i++) {
+        if(count === 10) {
+            result += '\n';
+            count = 0;
+        }
         for (const [key, value] of english_number.entries()) {
             if(JSON.stringify(value) === JSON.stringify(sort[i])) {
-                result.push(key);
+                count++;
+                result += key + ' ';
                 continue;
             }
         }
     }
-    let str = '';
-    let count = 0;
-    for(let i = 0; i < result.length; i++) {
-        count++;
-        str += result[i] + ' ';
-        if(count === 10) {
-            str += '\n'
-            count = 0;
-        }
-    }
-    return str;
+
+    return result;
 }
 
 const readline = require("readline");
