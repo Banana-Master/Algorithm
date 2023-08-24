@@ -11,7 +11,6 @@ function solution(N, stages) {
         }
         fail.set(i, failRate);
     }
-    console.log(fail.entries())
     let result = [...fail.entries()].map(([stage, rate]) => ({ stage, rate }));
     result.sort((a, b) => {
         if (a.rate > b.rate) return -1;
