@@ -1,9 +1,12 @@
-
-const solution = (arr) => {
+const solution = (str) => {
   let result = 0;
-  arr.forEach((x, i) => {
-    result += x * (31 ** i);
-  })
+  let r = 1;
+  for(let i = 0; i < count; i++) {
+    result += (str.charCodeAt(i) - 96) * r;
+    result %= 1234567891;
+    r *= 31;
+    r %= 1234567891;
+  }
   return result;
 };
 
@@ -20,7 +23,7 @@ rl.on("line", function (line) {
   if(count === 0) {
     count = +line;
   } else {
-    input = line.split('').map((x) => x.charCodeAt() - 96);
+    input = line;
     rl.close();
   }
 }).on("close", function () {
