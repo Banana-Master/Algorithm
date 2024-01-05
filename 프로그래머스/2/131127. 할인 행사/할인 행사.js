@@ -1,27 +1,22 @@
 function solution(want, number, discount) {
     const itemCount = new Map();
     want.forEach((x, i) => {
-        itemCount[x] = number[i];
+        itemCount.set(x, number[i]);
     });
-   
-    
+
     let result = 0;
-    
-    for(let i = 0; discount.length - 10 >= i; i++) {
+
+    for (let i = 0; i <= discount.length - 10; i++) {
         const discountList = new Map();
-        for(let j = 0; j < 10; j++) {
-            if(!discountList[discount[j + i]]) {
-                discountList[discount[j + i]] = 1;
-            } else {
-                discountList[discount[j + i]]++;
-            }
+
+        for (let j = 0; j < 10; j++) {
+            discountList.set(discount[j + i], (discountList.get(discount[j + i]) || 0) + 1);
         }
-        let state = 0;
-        want.forEach((x) => {
-            if(itemCount[x] === discountList[x]) state++;
-        });
-        if(state === want.length) result++;
+
+        if (want.every(x => itemCount.get(x) === discountList.get(x))) {
+            result++;
+        }
     }
-    
+
     return result;
 }
