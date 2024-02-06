@@ -1,13 +1,21 @@
-const solution = (input, num) => {
-  const init = "IO".repeat(num) + "I";
+const solution = (N, M, S) => {
   let result = 0;
-  for (let i = 0; i < input.length - init.length + 1; i++) {
-    const slice = input.slice(i, i + init.length);
-    if (init === slice) {
-      result++;
-      i++;
+    let i = 0;
+    let count = 0;
+
+    while (i < M - 1) {
+      if (S.substring(i, i + 3) === "IOI") {
+        i += 2;
+        count++;
+        if (count === N) {
+          result++;
+          count--;
+        }
+      } else {
+        i++;
+        count = 0;
+      }
     }
-  }
   return result;
 };
 
@@ -31,6 +39,6 @@ rl.on("line", function (line) {
     rl.close();
   }
 }).on("close", function () {
-  console.log(solution(S, N));
+  console.log(solution(N, M, S));
   process.exit();
 });
